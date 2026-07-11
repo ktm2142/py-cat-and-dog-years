@@ -1,4 +1,6 @@
 def get_human_age(cat_age: int, dog_age: int) -> list[int]:
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError("Both cat_age and dog_age must be integers")
     cat_human_age = 0
     if cat_age >= 24:
         cat_human_age = 2 + (cat_age - 24) // 4
