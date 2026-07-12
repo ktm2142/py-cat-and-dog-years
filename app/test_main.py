@@ -1,4 +1,5 @@
 import pytest
+from typing import Any
 from app import main
 
 
@@ -43,7 +44,7 @@ class TestCatAndDogYearsInHumanAge:
             expected_human_age: list
     ) -> None:
         assert (
-                main.get_human_age(cat_age, dog_age) == expected_human_age
+            main.get_human_age(cat_age, dog_age) == expected_human_age
         ), f"{cat_age} and {dog_age} should return {expected_human_age}"
 
     @pytest.mark.parametrize(
@@ -71,9 +72,9 @@ class TestCatAndDogYearsInHumanAge:
     )
     def test_raising_errors_correctly(
             self,
-            cat_age,
-            dog_age,
-            expected_error
-    ):
+            cat_age: Any,
+            dog_age: Any,
+            expected_error: type[Exception]
+    ) -> None:
         with pytest.raises(expected_error):
             main.get_human_age(cat_age, dog_age)
